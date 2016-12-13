@@ -1,0 +1,3 @@
+OneshotGetPersonsTeam What is {Person} team
+OneshotGetPersonsTeam What's {Person} team
+OneshotGetPersonsTeam What team is {Person} on
