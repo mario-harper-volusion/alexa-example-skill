@@ -48,12 +48,12 @@ function getTeamMembers (intent, session, callback) {
 
         console.log(members);
         if(members && members.length > 0){
-          speechOutput = `${members.join()} are on the ${teamName} team.`;
+          speechOutput = `${members.join(', ')} are on the ${teamName} team.`;
         } else {
-          speechOutput = `Looks like i'm not tracking the team assignment for ${personName}. Please try someone else.`;
+          speechOutput = `Looks like i'm not tracking the team assignment for ${teamName}. Please try another team.`;
         }
     } else {
-        speechOutput = 'You did not specify which person you were talking about, please specify by saying, which team is Mario on.';
+        speechOutput = 'You did not specify which team you were talking about, please specify by saying, who is on the blue team.';
     }
 
     callback(sessionAttributes,
