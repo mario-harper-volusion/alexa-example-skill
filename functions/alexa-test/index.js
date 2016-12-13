@@ -69,6 +69,8 @@ function onIntent(intentRequest, session, callback) {
 
     if (intentName === 'OneshotGetPersonsTeam') {
         oneshot.getPersonsTeam(intent, session, callback);
+    } else if (intentName === 'OneshotGetTeamMembers') {
+        oneshot.getTeamMembers(intent, session, callback);
     } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {

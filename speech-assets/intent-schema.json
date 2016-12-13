@@ -10,6 +10,15 @@
       ]
     },
     {
+      "intent": "OneshotGetTeamMembers",
+      "slots": [
+        {
+          "name": "Team",
+          "type": "TEAM_NAMES"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {

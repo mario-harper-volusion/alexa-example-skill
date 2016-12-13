@@ -3,7 +3,8 @@
 const userRepo = require('./userRepo');
 
 module.exports = {
-  getPersonsTeam
+  getPersonsTeam,
+  getTeamMembers
 }
 
 ///////////////////////////////////////////
@@ -22,6 +23,32 @@ function getPersonsTeam (intent, session, callback) {
 
         if(user){
           speechOutput = `${personName} is on the ${user.team.name} team.`;
+        } else {
+          speechOutput = `Looks like i'm not tracking the team assignment for ${personName}. Please try someone else.`;
+        }
+    } else {
+        speechOutput = 'You did not specify which person you were talking about, please specify by saying, which team is Mario on.';
+    }
+
+    callback(sessionAttributes,
+        _buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
+function getTeamMembers (intent, session, callback) {
+    const cardTitle = intent.name;
+    const teamNameSlot = intent.slots.Team;
+    let repromptText = '';
+    let sessionAttributes = {};
+    const shouldEndSession = true;
+    let speechOutput = '';
+
+    if (teamNameSlot) {
+        const teamName = _formatPersonName(teamNameSlot.value);
+        const members = userRepo.getMembersByTeam(teamName);
+
+        console.log(members);
+        if(members && members.length > 0){
+          speechOutput = `${members.join()} are on the ${teamName} team.`;
         } else {
           speechOutput = `Looks like i'm not tracking the team assignment for ${personName}. Please try someone else.`;
         }
