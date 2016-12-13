@@ -21,7 +21,7 @@ function getPersonsTeam (intent, session, callback) {
         const user = userRepo.getUserByName(personName);
 
         if(user){
-          speechOutput = `${personName} is on the ${user.team} team.`;
+          speechOutput = `${personName} is on the ${user.team.name} team.`;
         } else {
           speechOutput = `Looks like i'm not tracking the team assignment for ${personName}. Please try someone else.`;
         }

@@ -1,18 +1,6 @@
 'use strict';
 
-const TEAM_NAMES = {
-  koopas: 'koopas',
-  jesters: 'jesters'
-};
-
-const db = {
-  users : [
-    {
-      name: 'mario',
-      team: TEAM_NAMES.koopas
-    }
-  ]
-}
+const db = require('./db');
 
 module.exports = {
   getUserByName
